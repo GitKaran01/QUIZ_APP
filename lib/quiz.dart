@@ -25,14 +25,18 @@ class _Quiz extends State<Quiz> {
 
     var screenWidget =  currentScreen == 'startscreen' ? Startscreen(switchpage) : Questions();
 
-    return Container(
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-            colors: [Colors.deepPurple, Colors.blue],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight),
+    return MaterialApp(
+      home : Scaffold(
+        body : Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+                colors: [Colors.deepPurple, Colors.blue],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight),
+          ),
+          child: screenWidget,
+        ),
       ),
-      child: screenWidget,
     );
   }
 }
