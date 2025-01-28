@@ -11,7 +11,6 @@ class Quiz extends StatefulWidget {
 }
 
 class _Quiz extends State<Quiz> {
-
   var currentScreen = 'startscreen';
 
   void switchpage() {
@@ -22,12 +21,15 @@ class _Quiz extends State<Quiz> {
 
   @override
   Widget build(context) {
+    Widget screenWidget = Startscreen(switchpage);
 
-    var screenWidget =  currentScreen == 'startscreen' ? Startscreen(switchpage) : Questions();
+    if (currentScreen == 'questionscreen') {
+    screenWidget = Questions();
+}
 
     return MaterialApp(
-      home : Scaffold(
-        body : Container(
+      home: Scaffold(
+        body: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
                 colors: [Colors.deepPurple, Colors.blue],
