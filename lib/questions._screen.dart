@@ -23,9 +23,9 @@ class _QuestionsScreen extends State<QuestionsScreen> {
           ),
           SizedBox(height: 30),
          
-AnswerButton(1),
-AnswerButton(2),
-AnswerButton(3),
+AnswerButton(),
+AnswerButton(),
+AnswerButton(),
         
         ],
       ),
