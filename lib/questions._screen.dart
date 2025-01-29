@@ -36,6 +36,7 @@ class _QuestionsScreen extends State<QuestionsScreen> {
             return AnswerButton(answerText: answer,onTap: () {},);
           })
           // Now answer buttons will get created dynamically according to the number of questions given.
+          // Mapping list using spread operator
 
         ],
       ),
