@@ -1,19 +1,17 @@
 import 'package:flutter/material.dart';
 
 class AnswerButton extends StatelessWidget {
-  AnswerButton(this.answerText, {super.key});
+  AnswerButton(this.answerText,this.onTap,{super.key});
 
-  var answerText;
-  // final void Function() onTap;
+  final String answerText;
+  final void Function() onTap;
 
   @override
   Widget build(context) {
     return ElevatedButton(
-      onPressed: () {
-        // onTap();
-      },
+      onPressed: onTap,
       style: ElevatedButton.styleFrom(),
-      child: Text('$answerText'),
+      child: Text(answerText),
     );
   }
 }
