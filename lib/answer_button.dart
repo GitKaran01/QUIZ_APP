@@ -9,7 +9,6 @@ class AnswerButton extends StatelessWidget {
 
   @override
   Widget build(context) {
-    
     return ElevatedButton(
       onPressed: onTap,
       style: ElevatedButton.styleFrom(
@@ -17,8 +16,12 @@ class AnswerButton extends StatelessWidget {
           backgroundColor: Colors.blue,
           foregroundColor: Colors.white,
           shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(15))),
-      child: Text(answerText),
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+          elevation: 20),
+      child: Text(
+        answerText,
+        style: TextStyle(fontSize: 15),
+      ),
     );
   }
 }
