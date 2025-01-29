@@ -22,11 +22,18 @@ class _QuestionsScreen extends State<QuestionsScreen> {
             style: TextStyle(color: Colors.white),
           ),
           SizedBox(height: 30),
-         
-AnswerButton(),
-AnswerButton(),
-AnswerButton(),
-        
+          AnswerButton(
+            answerText: "Answer text...",
+            onTap: () {},
+          ),
+          AnswerButton(
+            answerText: "Answer text...",
+            onTap: () {},
+          ),
+          AnswerButton(
+            answerText: "Answer text...",
+            onTap: () {},
+          ),
         ],
       ),
     );
