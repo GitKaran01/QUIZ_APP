@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_app/data/questions.dart';
 import 'package:quiz_app/startscreen.dart';
 import 'package:quiz_app/questions._screen.dart';
 
@@ -11,7 +12,13 @@ class Quiz extends StatefulWidget {
 }
 
 class _Quiz extends State<Quiz> {
-  final List<String> selectedAnswers = [];
+  List<String> selectedAnswers = [];
+
+// final List<String> selectedAnswers = [];
+
+  // final is removed from the above bcz we want to reset it such that we again don't land on the error page after the all the questions end.
+  // if not done this there would be more answers than questions and the below conditions would never be met again.
+
   var currentScreen = 'startscreen';
 
   void switchpage() {
@@ -22,6 +29,12 @@ class _Quiz extends State<Quiz> {
 
   void chooseAnswer(String answer) {
     selectedAnswers.add(answer);
+
+    if (selectedAnswers.length == questions.length) {
+      setState(() {
+        currentScreen = 'startscreen';
+      });
+    }
   }
 
   @override
@@ -29,7 +42,7 @@ class _Quiz extends State<Quiz> {
     Widget screenWidget = Startscreen(switchpage);
 
     if (currentScreen == 'questionscreen') {
-      screenWidget = QuestionsScreen(chooseAnswer);
+      screenWidget = QuestionsScreen(onSelectAnswer: chooseAnswer);
     }
 
     return MaterialApp(
