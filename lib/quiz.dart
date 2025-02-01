@@ -33,7 +33,6 @@ class _Quiz extends State<Quiz> {
 
     if (selectedAnswers.length == questions.length) {
       setState(() {
-        selectedAnswers = [];
         currentScreen = 'result-screen';
         // currentScreen = 'startscreen'; it was for testing purpose.
       });
@@ -49,7 +48,9 @@ class _Quiz extends State<Quiz> {
     }
 
     if (currentScreen == 'result-screen') {
-      screenWidget = ResultsScreen(choosenAnswers: selectedAnswers,);
+      screenWidget = ResultsScreen(
+        choosenAnswers: selectedAnswers,
+      );               
     }
 
     return MaterialApp(
