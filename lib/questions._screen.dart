@@ -44,7 +44,7 @@ class _QuestionsScreen extends State<QuestionsScreen> {
                 currentQuestion.text,
                 style: GoogleFonts.oswald(
                     color: Colors.white,
-                    fontSize: 50,
+                    fontSize: 25,
                     fontWeight: FontWeight.bold),
                 textAlign: TextAlign.center,
               ),
@@ -58,7 +58,9 @@ class _QuestionsScreen extends State<QuestionsScreen> {
                 // while ... spread function doesn't
                 return AnswerButton(
                   answerText: answer,
-                  onTap: answerQuestion,
+                  onTap: () {
+                    answerQuestion(answer);
+                  },
                 );
               })
               // Now answer buttons will get created dynamically according to the number of questions given.
