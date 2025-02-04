@@ -14,6 +14,7 @@ class QuestionsSummary extends StatelessWidget {
         child: Column(
           children: summaryData.map((data) {
             return Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(((data['question_index'] as int) + 1).toString()),
                 // as int is used for typecast to tell dart that we know the value.
@@ -22,13 +23,23 @@ class QuestionsSummary extends StatelessWidget {
                 Expanded(
                   //expanded allow the column to expand till the limit of reow under which it come.
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Text(data['question'] as String),
+                      Text(
+                        data['question'] as String,
+                        style: TextStyle(fontSize: 20, color: Colors.white),
+                      ),
                       const SizedBox(
                         height: 5,
                       ),
-                      Text(data['user_answer'] as String),
-                      Text(data['correct_answer'] as String),
+                      Text(
+                        data['user_answer'] as String,
+                        style: TextStyle(fontSize: 17, color: Colors.red),
+                      ),
+                      Text(
+                        data['correct_answer'] as String,
+                        style: TextStyle(fontSize: 17, color: Colors.orange),
+                      ),
                     ],
                   ),
                 ),
