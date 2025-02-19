@@ -1,4 +1,5 @@
-import 'package:quiz_app/models/quiz_questions.dart';
+
+import '../models/quiz_question.dart';
 
 const questions = [
   QuizQuestion(
@@ -17,7 +18,7 @@ const questions = [
     'By using XCode for iOS and Android Studio for Android',
   ]),
   QuizQuestion(
-    'Whats the purpose of a StatefulWidget?',
+    'What\'s the purpose of a StatefulWidget?',
     [
       'Update UI as data changes',
       'Update data as UI changes',

@@ -1,0 +1,3 @@
+install latest visual c++ if emulator not run.    
+Delete pubsec.lock and run flutter pub get if any issue occurs.
+Snippet Suggestions settings to off suggetions in vs code. us inline to have suggetions in a line only.

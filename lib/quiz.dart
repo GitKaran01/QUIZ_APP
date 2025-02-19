@@ -1,67 +1,74 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_app/data/questions.dart';
-import 'package:quiz_app/startscreen.dart';
-import 'package:quiz_app/questions._screen.dart';
+import 'package:quiz_app/questions_screen.dart';
 import 'package:quiz_app/results_screen.dart';
+import 'package:quiz_app/start_screen.dart';
+
 
 class Quiz extends StatefulWidget {
   const Quiz({super.key});
+
   @override
   State<Quiz> createState() {
-    return _Quiz();
+    return _QuizState();
   }
 }
 
-class _Quiz extends State<Quiz> {
-  List<String> selectedAnswers = [];
+class _QuizState extends State<Quiz> {
+  final List<String> _selectedAnswers = [];
+  var _activeScreen = 'start-screen';
 
-// final List<String> selectedAnswers = [];
-
-  // final is removed from the above bcz we want to reset it such that we again don't land on the error page after the all the questions end.
-  // if not done this there would be more answers than questions and the below conditions would never be met again.
-
-  var currentScreen = 'startscreen';
-
-  void switchpage() {
+  void _switchScreen() {
     setState(() {
-      currentScreen = 'questionscreen';
+      _activeScreen = 'questions-screen';
     });
   }
 
-  void chooseAnswer(String answer) {
-    selectedAnswers.add(answer);
+  void _chooseAnswer(String answer) {
+    _selectedAnswers.add(answer);
 
-    if (selectedAnswers.length == questions.length) {
+    if (_selectedAnswers.length == questions.length) {
       setState(() {
-        currentScreen = 'result-screen';
-        // currentScreen = 'startscreen'; it was for testing purpose.
+        _activeScreen = 'results-screen';
       });
     }
   }
 
+  void restartQuiz() {
+    setState(() {
+      _activeScreen = 'questions-screen';
+    });
+  }
+
   @override
   Widget build(context) {
-    Widget screenWidget = Startscreen(switchpage);
+    Widget screenWidget = StartScreen(_switchScreen);
 
-    if (currentScreen == 'questionscreen') {
-      screenWidget = QuestionsScreen(onSelectAnswer: chooseAnswer);
+    if (_activeScreen == 'questions-screen') {
+      screenWidget = QuestionsScreen(
+        onSelectAnswer: _chooseAnswer,
+      );
     }
 
-    if (currentScreen == 'result-screen') {
+    if (_activeScreen == 'results-screen') {
       screenWidget = ResultsScreen(
-        choosenAnswers: selectedAnswers,
-      );               
+        chosenAnswers: _selectedAnswers,
+        onRestart: restartQuiz,
+      );
     }
 
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             gradient: LinearGradient(
-                colors: [Colors.deepPurple, Colors.blue],
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight),
+              colors: [
+                Color.fromARGB(255, 78, 13, 151),
+                Color.fromARGB(255, 107, 15, 168),
+              ],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
           ),
           child: screenWidget,
         ),
